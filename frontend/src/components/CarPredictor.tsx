@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
+const API_URL = (process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000").replace(/\/$/, "");
 
 type Options = {
   brands: string[];
@@ -78,9 +78,17 @@ export default function CarPredictor() {
       try {
         const response = await fetch(`${API_URL}/options`);
         if (!response.ok) throw new Error("Failed to load vehicle options.");
-        setOptions(await response.json());
-      } catch {
-        setError("Unable to connect to the prediction server.");
+        const data = await response.json();
+        if (!Array.isArray(data.brands) || !data.models || !Array.isArray(data.body_types)) {
+          throw new Error("The prediction server returned an invalid options response.");
+        }
+        setOptions(data);
+      } catch (err) {
+        setError(
+          err instanceof Error && err.message.includes("invalid options")
+            ? err.message
+            : "Unable to connect to the prediction server. Set NEXT_PUBLIC_API_URL to your deployed API URL."
+        );
       } finally {
         setLoadingOptions(false);
       }
@@ -189,6 +197,15 @@ export default function CarPredictor() {
     return (
       <div className="glass-card mx-auto max-w-md p-10 text-center text-[var(--muted)]">
         {error || "Loading vehicle options…"}
+      </div>
+    );
+  }
+
+  if (!options) {
+    return (
+      <div className="glass-card mx-auto max-w-xl p-8 text-center" role="alert">
+        <p className="font-semibold">Vehicle options are unavailable</p>
+        <p className="mt-2 text-sm text-[var(--muted)]">{error}</p>
       </div>
     );
   }

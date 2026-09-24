@@ -9,7 +9,7 @@ export default function Home() {
           <span className="mt-1 block text-3xl text-[var(--ink)] md:text-4xl">Used Car Price Predictor</span>
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-[var(--muted)]">
-          AI-powered used-car valuation based on your vehicle's specifications, age, mileage and ownership history.
+          AI-powered used-car valuation based on your vehicle&apos;s specifications, age, mileage and ownership history.
         </p>
       </header>
 

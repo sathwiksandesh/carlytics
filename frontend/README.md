@@ -1,4 +1,18 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Carlytics
+
+Used-car price prediction frontend built with Next.js.
+
+## Environment Variables
+
+The frontend needs a running prediction API for the vehicle dropdowns and price estimates. Create `.env.local` for local development:
+
+```env
+NEXT_PUBLIC_API_URL=http://127.0.0.1:8000
+```
+
+For Vercel, add `NEXT_PUBLIC_API_URL` in **Project Settings > Environment Variables** and set it to the deployed backend URL, including the protocol and without a trailing slash. Redeploy after saving the variable.
+
+If this variable is missing in production, the app will try localhost and the dropdown options will not load on a mobile device or any other remote device.
 
 ## Getting Started
 

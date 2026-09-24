@@ -14,6 +14,7 @@ from starlette.middleware.cors import CORSMiddleware
 app = FastAPI(
     title="Carlytics AI API",
     description="AI-powered used car price prediction API",
+    root_path="/api/backend",
     version="2.0.0",
 )
 
