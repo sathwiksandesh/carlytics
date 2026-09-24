@@ -14,7 +14,6 @@ from starlette.middleware.cors import CORSMiddleware
 app = FastAPI(
     title="Carlytics AI API",
     description="AI-powered used car price prediction API",
-    root_path="/api/backend",
     version="2.0.0",
 )
 
@@ -126,8 +125,7 @@ class CarInput(BaseModel):
 # ============================================================
 # Root Endpoint
 # ============================================================
-
-@app.get("/")
+@app.get("/api/backend")
 def root():
     return {
         "message": "Carlytics AI API is running",
@@ -135,11 +133,7 @@ def root():
     }
 
 
-# ============================================================
-# Health Check
-# ============================================================
-
-@app.get("/health")
+@app.get("/api/backend/health")
 def health():
     return {
         "status": "healthy",
@@ -147,46 +141,33 @@ def health():
     }
 
 
-# ============================================================
-# Available Options
-# ============================================================
-
-@app.get("/options")
+@app.get("/api/backend/options")
 def get_options():
     return {
         "brands": sorted(
             car_data["Brand"].dropna().unique().tolist()
         ),
-
         "models": {
             brand: sorted(models)
             for brand, models in BRAND_MODELS.items()
         },
-
         "fuel_types": sorted(
             car_data["Fuel_Type"].dropna().unique().tolist()
         ),
-
         "transmissions": {
             fuel: sorted(transmissions)
             for fuel, transmissions in VALID_TRANSMISSIONS.items()
         },
-
         "body_types": sorted(
             car_data["Body_Type"].dropna().unique().tolist()
         ),
-
         "variant_tiers": sorted(
             car_data["Variant_Tier"].dropna().unique().tolist()
         ),
     }
 
 
-# ============================================================
-# Prediction Endpoint
-# ============================================================
-
-@app.post("/predict")
+@app.post("/api/backend/predict")
 def predict_price(car: CarInput):
 
     # --------------------------------------------------------
