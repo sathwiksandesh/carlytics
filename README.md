@@ -2,13 +2,6 @@
 
 > An AI-powered used-car valuation platform that predicts the estimated market price of vehicles using machine learning, vehicle specifications, ownership history, mileage, and other key attributes.
 
-![Python](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)
-![XGBoost](https://img.shields.io/badge/XGBoost-Regression-EB5F0C)
-![Next.js](https://img.shields.io/badge/Next.js-000000?logo=nextdotjs&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white)
-
 Carlytics is a full-stack machine learning application built to estimate used-car prices in the Indian automobile market. The project combines a trained **XGBoost regression model**, a **FastAPI backend**, and a **Next.js frontend** to provide an interactive car valuation experience.
 
 <!-- Add a screenshot of the app here, e.g. ![Carlytics screenshot](docs/screenshot.png) -->
