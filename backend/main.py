@@ -35,7 +35,7 @@ app.add_middleware(
 # Paths
 # ============================================================
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent
 
 MODEL_PATH = BASE_DIR / "models" / "car_price_model.pkl"
 DATA_PATH = BASE_DIR / "data" / "india_used_car_prices_dataset.csv"
@@ -129,7 +129,7 @@ class CarInput(BaseModel):
 @app.get("/")
 def root():
     return {
-        "message": "AutoValue AI API is running",
+        "message": "Carlytics AI API is running",
         "version": "2.0.0",
     }
 
