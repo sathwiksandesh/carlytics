@@ -369,7 +369,7 @@ The model performs particularly well across the common budget and mid-range used
 ## 📁 Project Structure
 
 ```text
-car-price-predictor/
+carlytics/
 │
 ├── backend/
 │   ├── main.py
@@ -412,8 +412,8 @@ car-price-predictor/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/car-price-predictor.git
-cd car-price-predictor
+git clone https://github.com/sathwiksandesh/carlytics.git
+cd carlytics
 ```
 
 ### 🐍 Backend Setup
